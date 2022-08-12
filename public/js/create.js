@@ -1,0 +1,24 @@
+var socket = io();
+
+socket.on('connect', function(){
+    socket.emit('requestQuizs');//Get database names to display to user
+});
+
+socket.on('quizNamesData', function(data){
+    for(var i = 0; i < data.length; i++){
+        var div = document.getElementById('game-list');
+        var button = document.createElement('button');
+        
+        button.innerHTML = data[i].name;
+        button.setAttribute('onClick', `startGame('${data[i]._id}')`);
+        button.setAttribute('class', 'gameButton');
+        
+        div.appendChild(button);
+        div.appendChild(document.createElement('br'));
+        div.appendChild(document.createElement('br'));
+    }
+});
+
+function startGame(data){
+    window.location.href="/host/" + "?id=" + data;
+}
