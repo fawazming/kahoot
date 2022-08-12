@@ -23,7 +23,7 @@ const players = new Players();
 app.use(express.static(publicPath));
 
 
-server.listen(process.env.PORT, ()=>{console.log(`Server Started on port ${process.env.PORT}`)})
+server.listen(5000, ()=>{console.log(`Server Started on port ${5000}`)})
 
 io.on('connection', (socket)=>{
 
